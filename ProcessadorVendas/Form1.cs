@@ -82,26 +82,26 @@ namespace ProcessadorVendas
         {
             if (_dadosCarregados?.Vendas == null) return;
 
-            // --- LÓGICA ATUALIZADA ---
+            //  LÓGICA ATUALIZADA 
             var relatorio = _dadosCarregados.Vendas
                 .GroupBy(v => v.Vendedor)
                 .Select(grupo => new RelatorioVendedor
                 {
                     Nome = grupo.Key,
 
-                    // Totais Gerais
+                    // totais gerais
                     QuantidadeVendas = grupo.Count(),
                     TotalVendido = grupo.Sum(v => v.Valor),
                     TotalComissao = grupo.Sum(v => _calculadora.Calcular(v.Valor)),
 
                     // --- DETALHAMENTO DAS REGRAS (AQUI ESTÁ O TRUQUE) ---
-                    // Conta quantas vendas são menores que 100
+                    // contando  menores que 100
                     VendasSemComissao = grupo.Count(v => v.Valor < 100),
 
-                    // Conta quantas estão entre 100 e 500
+                    // contando entre 100 e 500
                     Vendas1Porcento = grupo.Count(v => v.Valor >= 100 && v.Valor < 500),
 
-                    // Conta quantas são 500 ou mais
+                    // contando as maiores de 500
                     Vendas5Porcento = grupo.Count(v => v.Valor >= 500)
                 })
                 .OrderByDescending(r => r.TotalComissao)
@@ -114,7 +114,7 @@ namespace ProcessadorVendas
             dataGridView1.Columns["TotalVendido"].DefaultCellStyle.Format = "C2";
             dataGridView1.Columns["TotalComissao"].DefaultCellStyle.Format = "C2";
 
-            // Renomeando os cabeçalhos para ficar profissional
+            // Renomeando os cabeçalhos legivel
             dataGridView1.Columns["QuantidadeVendas"].HeaderText = "Total Vendas";
             dataGridView1.Columns["TotalVendido"].HeaderText = "Total R$";
             dataGridView1.Columns["TotalComissao"].HeaderText = "Comissão Total";

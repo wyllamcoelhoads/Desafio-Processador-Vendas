@@ -20,7 +20,17 @@ O objetivo era ler um JSON com dados "sujos" (nomes com quebras de linha), sanit
 2. **Relatório Detalhado**: Exibição não apenas dos totais, mas da quantidade de vendas que se enquadraram em cada faixa de comissão (0%, 1% e 5%).
 3. **Tratamento de Erros**: O sistema protege contra JSONs inválidos ou nulos.
 
-## Como rodar
+## 📦 Como testar sem compilar
+Você pode baixar a versão executável (Windows) pronta para uso na aba de Releases:
+
+[📥 Baixar Executável (v1.0)](https://github.com/wyllamcoelhoads/Desafio-Processador-Vendas/releases/latest)
+
+**Instruções:**
+1. Baixe o arquivo `.zip`.
+2. Extraia para uma pasta.
+3. Execute o arquivo `ProcessadorVendas.exe`.
+
+## Como Compilar
 1. Clone o repositório.
 2. Abra a solução `ProcessadorVendas.sln` no Visual Studio.
 3. Execute o projeto (F5).
